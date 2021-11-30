@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Question;
+use App\Http\Controllers\AppController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,19 +16,6 @@ use App\Models\Question;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// catchall route for Vuejs3 single Page Application
+Route::get('/{any}', [AppController::class,'index'])->where('any', '.*');
 
-Route::get('game', function () {
-    return view('game');
-});
-
-Route::get('next', function(){
-    $question = App\Models\Question::findOrFail(1);
-    $answers = $question->answers;
-    return response()->json([
-        'question' => $question,
-        'answers' => $answers,
-    ]);
-});

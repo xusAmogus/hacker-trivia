@@ -8,8 +8,7 @@ export default {
     components: '',
     data(){
         return {
-            menu: [{item : 'Manage Questions', path: '/manage'},{ item:'Game', path:'/game'}],
-            
+            menu: [{item : 'Manage Questions', path: '/manage'},{ item:'Game', path:'/game'}],            
         }                            
     },
     

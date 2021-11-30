@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('next', function(){
+    $question = App\Models\Question::findOrFail(1);
+    $answers = $question->answers;
+    return response()->json([
+        'question' => $question,
+        'answers' => $answers,
+    ]);
+});
