@@ -13,8 +13,10 @@ class CreatePlayerTable extends Migration
      */
     public function up()
     {
-        Schema::create('player', function (Blueprint $table) {
+        Schema::create('players', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('score');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreatePlayerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('player');
+        Schema::dropIfExists('players');
     }
 }

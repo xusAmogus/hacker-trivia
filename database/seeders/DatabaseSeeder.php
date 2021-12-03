@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Question;
+use App\Models\Answer;
+use App\Models\Player;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Question::factory(10)->has(Answer::factory()->count(4))->create();
+        Player::factory(1)->create();
     }
 }
