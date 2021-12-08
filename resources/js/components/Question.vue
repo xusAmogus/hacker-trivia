@@ -25,18 +25,22 @@ export default {
     methods: {        
         processAnswer(answer) {
             let aw = {...answer}
-            console.log(aw)
             aw.correct == 1 ? this.correctAndNextQuestion() : this.incorrectAndNextQuestion()
         },
         correctAndNextQuestion() {
-            //this.player.score++
+            axios.put('/api/players/'+this.player.id, {
+                score: this.player.score++                
+            })
+            .then(() => this.$emit('nextQuestion', this.question.id))
+            .catch((error) => console.log(error))
             //increment score and save to db
             //emit next question event to game page
             console.log('correct')
         },
         incorrectAndNextQuestion(){
             console.log('incorrect')
-        }
+        },
+        
     }
 }
 </script>

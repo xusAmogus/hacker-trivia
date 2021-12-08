@@ -1,5 +1,5 @@
 <template>
-    <Question v-if="questionData && playerData" :player="this.playerData" :question="this.questionData" v-show="isVisible()"></Question>
+    <Question v-on:nextQuestion="nextQuestion($event)" v-if="questionData && playerData" :player="this.playerData" :question="this.questionData" v-show="isVisible()"></Question>
 </template>
 
 <script>
@@ -10,7 +10,8 @@ export default {
     data() {
        return {
            questionData: this.getQuestion(),           
-           playerData: this.getPlayer()           
+           playerData: this.getPlayer(),
+           currentQuestion: ''    
        }
    },
     methods: {
@@ -21,9 +22,17 @@ export default {
            axios.get('/api/question/1').then((response) => {               
                this.questionData = response.data.question
             }).catch((error) => console.log(error))
-       },       
+       },
+       nextQuestion(id) {
+            this.currentQuestion = id
+            this.currentQuestion++
+            axios.get('/api/question/'+this.currentQuestion).then((response) => { 
+                this.questionData = response.data.question
+            }).catch((error) => console.log(error))
+       },
+            
        getPlayer() {
-           axios.get('/api/player/1').then((response) => {               
+           axios.get('/api/players/1').then((response) => {               
                this.playerData = response.data.player[0]
            }).catch((error) => console.log(error))
        }

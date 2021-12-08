@@ -19575,13 +19575,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     processAnswer: function processAnswer(answer) {
       var aw = _objectSpread({}, answer);
 
-      console.log(aw);
       aw.correct == 1 ? this.correctAndNextQuestion() : this.incorrectAndNextQuestion();
     },
     correctAndNextQuestion: function correctAndNextQuestion() {
-      //this.player.score++
-      //increment score and save to db
+      var _this = this;
+
+      axios.put('/api/players/' + this.player.id, {
+        score: this.player.score++
+      }).then(function () {
+        return _this.$emit('nextQuestion', _this.question.id);
+      })["catch"](function (error) {
+        return console.log(error);
+      }); //increment score and save to db
       //emit next question event to game page
+
       console.log('correct');
     },
     incorrectAndNextQuestion: function incorrectAndNextQuestion() {

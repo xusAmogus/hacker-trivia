@@ -35,7 +35,7 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -72,7 +72,14 @@ class PlayerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $player = Player::find($id);
+        $player->score++;
+        $player->save();
+        
+        return response()->json([
+            'next' => true
+        ]);
+        
     }
 
     /**

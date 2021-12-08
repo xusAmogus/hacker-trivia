@@ -21,7 +21,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       questionData: this.getQuestion(),
-      playerData: this.getPlayer()
+      playerData: this.getPlayer(),
+      currentQuestion: ''
     };
   },
   methods: {
@@ -37,11 +38,22 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(error);
       });
     },
-    getPlayer: function getPlayer() {
+    nextQuestion: function nextQuestion(id) {
       var _this2 = this;
 
-      axios.get('/api/player/1').then(function (response) {
-        _this2.playerData = response.data.player[0];
+      this.currentQuestion = id;
+      this.currentQuestion++;
+      axios.get('/api/question/' + this.currentQuestion).then(function (response) {
+        _this2.questionData = response.data.question;
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    getPlayer: function getPlayer() {
+      var _this3 = this;
+
+      axios.get('/api/players/1').then(function (response) {
+        _this3.playerData = response.data.player[0];
       })["catch"](function (error) {
         return console.log(error);
       });
@@ -68,6 +80,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return $data.questionData && $data.playerData ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Question, {
     key: 0,
+    onNextQuestion: _cache[0] || (_cache[0] = function ($event) {
+      return $options.nextQuestion($event);
+    }),
     player: this.playerData,
     question: this.questionData
   }, null, 8
