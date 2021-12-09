@@ -1,5 +1,5 @@
 <template>
-    <div><ul class="menu"><li v-for="items in menu"><router-link :to="items.path" >{{items.item}} || </router-link></li></ul></div>
+    <div><ul class="menu"><li v-for="items in menu"><router-link :to="items.path" class="btn btn-alert">{{items.item}} || </router-link></li></ul></div>
 </template>
 
 <script>

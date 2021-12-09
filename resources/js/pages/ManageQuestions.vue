@@ -1,7 +1,7 @@
 <template>
-    <button  @click="showModal() + toggle();">create question</button>
-    <button  @click="showModal() + toggle();">edit question</button>
-    <button  @click="showModal() + toggle();">delete question</button>
+    <button class="btn btn-alert" @click="showModal('create') + toggle();">create question</button>
+    <button class="btn btn-alert" @click="showModal('edit') + toggle();">edit question</button>
+    <button class="btn btn-alert" @click="showModal('delete') + toggle();">delete question</button>
     <modal v-show="isModalVisible" @close="closeModal">
     </modal>
 </template>

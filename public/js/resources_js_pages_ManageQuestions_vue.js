@@ -14,7 +14,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Form',
   data: function data() {
-    return {};
+    return {
+      formItems: {
+        question: '',
+        answers: {
+          answerA: '',
+          answerB: '',
+          answerC: '',
+          answerD: ''
+        }
+      }
+    };
+  },
+  methods: {
+    processForm: function processForm(e) {
+      e.preventDefault();
+      console.log(this.formItems);
+    }
   }
 });
 
@@ -94,12 +110,107 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var _hoisted_1 = {
+  "class": "form-group"
+};
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"form-group\"><label for=\"text\">Question:</label><input type=\"text\" class=\"form-control\" id=\"text1\" aria-describedby=\"text1\" placeholder=\"Enter question\"><label for=\"text\">Answer:</label><input type=\"text\" class=\"form-control\" id=\"text1\" aria-describedby=\"text1\" placeholder=\"Enter answer\"><label for=\"text\">Answer:</label><input type=\"text\" class=\"form-control\" id=\"text1\" aria-describedby=\"text1\" placeholder=\"Enter answer\"><label for=\"text\">Answer:</label><input type=\"text\" class=\"form-control\" id=\"text1\" aria-describedby=\"text1\" placeholder=\"Enter answer\"><label for=\"text\">Answer:</label><input type=\"text\" class=\"form-control\" id=\"text1\" aria-describedby=\"text1\" placeholder=\"Enter answer\"></div><div class=\"form-group\"><div class=\"dropdown\"><button type=\"button\" class=\"btn btn-primary dropdown-toggle\" data-bs-toggle=\"dropdown\"> Select correct answer </button><ul class=\"dropdown-menu\"><li><a class=\"dropdown-item\" href=\"#\">1</a></li><li><a class=\"dropdown-item\" href=\"#\">2</a></li><li><a class=\"dropdown-item\" href=\"#\">3</a></li><li><a class=\"dropdown-item\" href=\"#\">4</a></li></ul></div></div><button type=\"submit\" class=\"btn btn-primary\">Submit</button>", 3);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "text"
+}, "Question:", -1
+/* HOISTED */
+);
 
-var _hoisted_4 = [_hoisted_1];
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "text"
+}, "Answer:", -1
+/* HOISTED */
+);
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "text"
+}, "Answer:", -1
+/* HOISTED */
+);
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "text"
+}, "Answer:", -1
+/* HOISTED */
+);
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "text"
+}, "Answer:", -1
+/* HOISTED */
+);
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"form-group\"><div class=\"dropdown\"><button type=\"button\" class=\"btn btn-primary dropdown-toggle\" data-bs-toggle=\"dropdown\"> Select correct answer </button><ul class=\"dropdown-menu\"><li><a class=\"dropdown-item\" href=\"#\">1</a></li><li><a class=\"dropdown-item\" href=\"#\">2</a></li><li><a class=\"dropdown-item\" href=\"#\">3</a></li><li><a class=\"dropdown-item\" href=\"#\">4</a></li></ul></div></div><button type=\"submit\" class=\"btn btn-primary\">Submit</button>", 2);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("form", null, _hoisted_4);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("form", {
+    onSubmit: _cache[5] || (_cache[5] = function () {
+      return $options.processForm && $options.processForm.apply($options, arguments);
+    }),
+    action: "#",
+    method: "post"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.formItems.question = $event;
+    }),
+    type: "text",
+    "class": "form-control",
+    id: "text1",
+    "aria-describedby": "text1",
+    placeholder: "Enter question"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formItems.question]]), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.formItems.answers.answerA = $event;
+    }),
+    type: "text",
+    "class": "form-control",
+    id: "text1",
+    "aria-describedby": "text1",
+    placeholder: "Enter answer"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formItems.answers.answerA]]), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.formItems.answers.answerB = $event;
+    }),
+    type: "text",
+    "class": "form-control",
+    id: "text1",
+    "aria-describedby": "text1",
+    placeholder: "Enter answer"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formItems.answers.answerB]]), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.formItems.answers.answerC = $event;
+    }),
+    type: "text",
+    "class": "form-control",
+    id: "text1",
+    "aria-describedby": "text1",
+    placeholder: "Enter answer"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formItems.answers.answerC]]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return $data.formItems.answers.answerD = $event;
+    }),
+    type: "text",
+    "class": "form-control",
+    id: "text1",
+    "aria-describedby": "text1",
+    placeholder: "Enter answer"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.formItems.answers.answerD]])]), _hoisted_7], 32
+  /* HYDRATE_EVENTS */
+  );
 }
 
 /***/ }),
@@ -177,16 +288,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("modal");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn btn-alert",
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      $options.showModal() + $options.toggle();
+      $options.showModal('create') + $options.toggle();
     })
   }, "create question"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn btn-alert",
     onClick: _cache[1] || (_cache[1] = function ($event) {
-      $options.showModal() + $options.toggle();
+      $options.showModal('edit') + $options.toggle();
     })
   }, "edit question"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn btn-alert",
     onClick: _cache[2] || (_cache[2] = function ($event) {
-      $options.showModal() + $options.toggle();
+      $options.showModal('delete') + $options.toggle();
     })
   }, "delete question"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_modal, {
     onClose: $options.closeModal
