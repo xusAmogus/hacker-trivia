@@ -6,7 +6,7 @@
                     <h5>{{question.text}}</h5><span> {{ player.score}} </span>
                 </div>
 
-                <div v-for="answer in question.answers">
+                <div v-bind:key="answer" v-for="answer in question.answers">
                     <div class="form-check">
                         <label class="form-check-label">
                             <input v-on:click="processAnswer(answer)"  :id="answer.id" name="option" type="radio" class="form-check-input">{{answer.text}}

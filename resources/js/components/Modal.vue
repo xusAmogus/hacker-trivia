@@ -11,8 +11,9 @@
 
           <div class="modal-body">
             <slot name="body">
-              default body
+              <slot name="form"><Form></Form></slot>
             </slot>
+            
           </div>
 
           <div class="modal-footer">
@@ -29,8 +30,10 @@
 </template>
 
 <script>
+import Form from './Form.vue'
 
 export default {
+    components: { Form },
     methods: {
         close() {
         this.$emit('close')

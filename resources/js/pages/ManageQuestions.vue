@@ -2,8 +2,7 @@
     <button  @click="showModal() + toggle();">create question</button>
     <button  @click="showModal() + toggle();">edit question</button>
     <button  @click="showModal() + toggle();">delete question</button>
-    <modal v-show="isModalVisible"
-      @close="closeModal">
+    <modal v-show="isModalVisible" @close="closeModal">
     </modal>
 </template>
 
