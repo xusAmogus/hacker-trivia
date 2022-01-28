@@ -5,28 +5,24 @@
             <input v-model="formItems.question" type="text" class="form-control" id="text1" aria-describedby="text1" placeholder="Enter question">
             
             <label for="text">Answer:</label>
-            <input v-model="formItems.answers.answerA" type="text" class="form-control" id="text1" aria-describedby="text1" placeholder="Enter answer">
+            <input v-model="formItems.answers.answerA.text" type="text" class="form-control" id="text1" aria-describedby="text1" placeholder="Enter answer">
             
             <label for="text">Answer:</label>
-            <input v-model="formItems.answers.answerB" type="text" class="form-control" id="text1" aria-describedby="text1" placeholder="Enter answer">
+            <input v-model="formItems.answers.answerB.text" type="text" class="form-control" id="text1" aria-describedby="text1" placeholder="Enter answer">
  
             <label for="text">Answer:</label>
-            <input v-model="formItems.answers.answerC" type="text" class="form-control" id="text1" aria-describedby="text1" placeholder="Enter answer">
+            <input v-model="formItems.answers.answerC.text" type="text" class="form-control" id="text1" aria-describedby="text1" placeholder="Enter answer">
         
             <label for="text">Answer:</label>
-            <input v-model="formItems.answers.answerD" type="text" class="form-control" id="text1" aria-describedby="text1" placeholder="Enter answer">
+            <input v-model="formItems.answers.answerD.text" type="text" class="form-control" id="text1" aria-describedby="text1" placeholder="Enter answer">
         </div>
         <div class="form-group">
             <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                    Select correct answer
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">1</a></li>
-                    <li><a class="dropdown-item" href="#">2</a></li>
-                    <li><a class="dropdown-item" href="#">3</a></li>
-                    <li><a class="dropdown-item" href="#">4</a></li>
-                </ul>
+                
+                <select v-model="selectedOption">
+                    <option disabled value="">Please select one</option>
+                    <option v-for="answer in formItems.answers" v-bind:key="answer.id" v-bind:value="answer.id">{{answer.id}}</option>
+                </select>
             </div> 
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -40,19 +36,46 @@ export default {
             formItems: {
                 question: '',
                 answers: {
-                    answerA: '',
-                    answerB: '',
-                    answerC: '',
-                    answerD: ''
+                    answerA: { id:1, text: '', correct: false },
+                    answerB: { id:2, text: '', correct: false },
+                    answerC: { id:3, text: '', correct: false },
+                    answerD: { id:4, text: '', correct: false }
                 }
-            }
+            },
+            selectedOption: undefined
         }                            
     },
     methods: {
         processForm: function (e) {
             e.preventDefault()
-            console.log(this.formItems)
+            let items = {...this.formItems}
+            axios.post('/api/questions',{
+                'items':items
+            })
+            .then((result) => console.log(result))
+            .catch((error) => console.log(error)).finally(() => this.$router.push('game'))                
         }
+    },
+    watch: {
+        selectedOption(newVal) {
+            switch(newVal) {
+                case 1:
+                    this.formItems.answers.answerA.correct = newVal
+                    break;
+                case 2:
+                    this.formItems.answers.answerB.correct = newVal
+                    break;
+                case 3:
+                    this.formItems.answers.answerC.correct = newVal
+                    break;
+                case 4:
+                    this.formItems.answers.answerD.correct = newVal
+                    break;
+                default:
+                    // code block
+            }
+        },
+           
     },
 }
 </script>

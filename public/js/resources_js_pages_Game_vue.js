@@ -32,7 +32,7 @@ __webpack_require__.r(__webpack_exports__);
     getQuestion: function getQuestion() {
       var _this = this;
 
-      axios.get('/api/question/1').then(function (response) {
+      axios.get('/api/questions/1').then(function (response) {
         _this.questionData = response.data.question;
       })["catch"](function (error) {
         return console.log(error);
@@ -43,7 +43,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.currentQuestion = id;
       this.currentQuestion++;
-      axios.get('/api/question/' + this.currentQuestion).then(function (response) {
+      axios.get('/api/questions/' + this.currentQuestion).then(function (response) {
         _this2.questionData = response.data.question;
       })["catch"](function (error) {
         return console.log(error);

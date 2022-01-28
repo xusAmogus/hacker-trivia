@@ -19,14 +19,14 @@ export default {
            return this.$store.state.isVisible
        },
        getQuestion() {
-           axios.get('/api/question/1').then((response) => {               
+           axios.get('/api/questions/1').then((response) => {               
                this.questionData = response.data.question
             }).catch((error) => console.log(error))
        },
        nextQuestion(id) {
             this.currentQuestion = id
             this.currentQuestion++
-            axios.get('/api/question/'+this.currentQuestion).then((response) => { 
+            axios.get('/api/questions/'+this.currentQuestion).then((response) => { 
                 this.questionData = response.data.question
             }).catch((error) => console.log(error))
        },
